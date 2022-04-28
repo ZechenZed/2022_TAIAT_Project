@@ -1,6 +1,7 @@
 import pygame
 import sys
 import matplotlib as plt
+
 try:
     sys.path.append('../PythonAPI/carla/agents/navigation/')
 except IndexError:
@@ -43,7 +44,7 @@ class carlaEnv(gym.Env):
         self.max_ego_spawn_times = params['max_ego_spawn_times']
         self.display_route = params['display_route']
         self.total_step = 0
-        
+
         # action and observation spaces
         self.discrete = params['discrete']
         self.discrete_act = [params['discrete_acc'], params['discrete_steer']]  # acc, steer
@@ -57,7 +58,6 @@ class carlaEnv(gym.Env):
                                            np.array([params['continuous_accel_range'][1],
                                                      params['continuous_steer_range'][1]]),
                                            dtype=np.float32)  # acc, steer
-
 
         # For PID control, we need route planner to generate waypoints, and vehicle's or persons' rotation.yaw
         self.integralPsiError = 0
@@ -98,10 +98,10 @@ class carlaEnv(gym.Env):
         self.actor_list.append(self.ego_vehicle)
         # Create Wheels Physics Control
         # tried 2.0
-        front_left_wheel  = carla.WheelPhysicsControl(tire_friction=5.0, damping_rate=1.5, max_steer_angle=70.0)
+        front_left_wheel = carla.WheelPhysicsControl(tire_friction=5.0, damping_rate=1.5, max_steer_angle=70.0)
         front_right_wheel = carla.WheelPhysicsControl(tire_friction=5.0, damping_rate=1.5, max_steer_angle=70.0)
-        rear_left_wheel   = carla.WheelPhysicsControl(tire_friction=10.0, damping_rate=1.5, max_steer_angle=0.0)
-        rear_right_wheel  = carla.WheelPhysicsControl(tire_friction=10.0, damping_rate=1.5, max_steer_angle=0.0)
+        rear_left_wheel = carla.WheelPhysicsControl(tire_friction=10.0, damping_rate=1.5, max_steer_angle=0.0)
+        rear_right_wheel = carla.WheelPhysicsControl(tire_friction=10.0, damping_rate=1.5, max_steer_angle=0.0)
 
         wheels = [front_left_wheel, front_right_wheel, rear_left_wheel, rear_right_wheel]
         # Change Vehicle Physics Control parameters of the vehicle
@@ -109,7 +109,6 @@ class carlaEnv(gym.Env):
         physics_control.wheels = wheels
         self.ego_vehicle.apply_physics_control(physics_control)
         # self.ego_vehicle.set_autopilot(True)
-
 
         print('created %s' % self.ego_vehicle.type_id)
 
@@ -152,6 +151,7 @@ class carlaEnv(gym.Env):
         self.ped_con_count = 0
         self.ped_y_control = 0
         self.stop_start_time = 0
+
     def generateWaypoints(self, carla_location_start, carla_location_goal):
         '''
         Example input:
@@ -261,8 +261,10 @@ class carlaEnv(gym.Env):
         #     return -(F*20), delta
         # else:
         #     return F, delta
-        if self.relative_distance < 14:
+        if self.relative_distance < 10:
             self.ped_con_count = 1
+        if self.relative_distance >= 6:
+            self.ped_con_count = 0
 
         return F, delta
 
@@ -274,9 +276,14 @@ class carlaEnv(gym.Env):
         # PID control for ego_vehicle
         throttle, steer = self.get_control_input_PID(trajectory, ego)
         # print(throttle)
-        if self.ped_con_count != 0:
-            throttle = -(throttle*20)
-        brake = np.absolute(throttle) if throttle < 0 else 0
+        brake = 0
+        if self.ped_con_count == 1:
+            throttle = -(throttle * 20)
+            brake = np.absolute(throttle) if throttle < 0 else 0
+            throttle = 0.0
+        # elif self.ped_con_count == 0:
+        #     throttle, steer = self.get_cont
+
         act = carla.VehicleControl(throttle=float(throttle), steer=float(-steer), brake=float(brake))
         self.ego_vehicle.apply_control(act)
 
@@ -294,7 +301,7 @@ class carlaEnv(gym.Env):
         else:
             self.ped_y_control = 0.0
 
-        actp = carla.WalkerControl(carla.Vector3D(x=0.0, y=self.ped_y_control, z=0.0), speed=3.0, jump=False)
+        actp = carla.WalkerControl(carla.Vector3D(x=0.0, y=self.ped_y_control, z=0.0), speed=10.0, jump=False)
         # actp = carla.WalkerControl()
         self.pedestrian.apply_control(actp)
         self.world.tick()
@@ -343,13 +350,13 @@ class carlaEnv(gym.Env):
         # 1. If collides -- Collision sensor
         if len(self.collision_hist) > 0:
             print('collision')
-            return True,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+            return True, [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll], \
                    [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
         # 2. If reach maximum timestep # need global var
         if self.time_step > self.max_time_episode:
             print('timestep maxed out')
-            return True,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+            return True, [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll], \
                    [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
         # If at destination # set destination to ?
@@ -358,7 +365,7 @@ class carlaEnv(gym.Env):
             for destination in self.destinations:
                 if np.sqrt((ego_x - destination[0]) ** 2 + (ego_y - destination[1]) ** 2) < 4:
                     print('destination')
-                    return True,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+                    return True, [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll], \
                            [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
         # 4. If out of lane
@@ -375,7 +382,7 @@ class carlaEnv(gym.Env):
         # 1.5 was used but too small for lane departure, 300 worked
         if abs(dis) > 4.0 * self.out_lane_thres:
             print('out of lane')
-            return True,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+            return True, [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll], \
                    [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
         # # if ego-vehicle is too close to pedestrian (Temporarily not used)
@@ -383,7 +390,7 @@ class carlaEnv(gym.Env):
         #     return True
 
         # angle: pitch yaw roll in degrees, left hand rule, shit rule
-        return False,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+        return False, [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll], \
                [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
     def reset(self):
@@ -427,8 +434,8 @@ class carlaEnv(gym.Env):
         # Add pedestrian
         bp = random.choice(self.blueprint_library.filter('walker'))
         self.pedestrian = self.world.spawn_actor(bp, self.ped_transform)
-        self.actor_list.append(self.pedestrian) 
-               
+        self.actor_list.append(self.pedestrian)
+
         def get_collision_hist(event):
             impulse = event.normal_impulse
             intensity = np.sqrt(impulse.x ** 2 + impulse.y ** 2 + impulse.z ** 2)
