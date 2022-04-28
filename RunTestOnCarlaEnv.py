@@ -53,7 +53,7 @@ def main():
     'lidar_bin': 0.125,  # bin size of lidar sensor (meter)
     'd_behind': 12,  # distance behind the ego vehicle (meter)
     'out_lane_thres': 2.0,  # threshold for out of lane
-    'desired_speed': 10,  # desired speed (m/s)
+    'desired_speed': 12,  # desired speed (m/s)
     'max_ego_spawn_times': 200,  # maximum times to spawn ego vehicle
     'display_route': True,  # whether to render the desired route
     'pixor_size': 64,  # size of the pixor labels
@@ -65,7 +65,7 @@ def main():
     # 1) [20, 134.5, 1.0, 0.0, 0.0, 0.0]
     # 2) [38.1, -133.8, 2.0](straight) [-25.0,-134.0,1.0] [7.5, -179.3, 1.0](left-turn)
     # 3) 1. [6.7, -150.0, 1.0] 2.[21.0, -134.4, 1.0] 3.[-1.0, -121.1, 1.0]
-    'ego_vehicle_end_state': [7.5, -179.3, 1.0],
+    'ego_vehicle_end_state': [-1.0, -121.1, 1.0],
     'ego_person_init_state': [-15, -128, 1.0, 90.0, 0.0, 0.0],
     'ego_person_end_state': [-20, 134.5, 1.0, 0.0, 0.0, 0.0],
     'xscope_min': -12,
