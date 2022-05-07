@@ -3,7 +3,7 @@ import sys
 import matplotlib as plt
 
 try:
-    sys.path.append('../PythonAPI/carla/agents/navigation/')
+    sys.path.append('/opt/carla-simulator/PythonAPI/carla/agents/navigation/')
 except IndexError:
     print("navigation not found")
     pass
@@ -12,10 +12,12 @@ from global_route_planner_dao import GlobalRoutePlannerDAO
 import numpy as np
 import random
 import glob
+from utils import *
+from reinforce_continuous import REINFORCE
 
 try:
     sys.path.append(
-        glob.glob('/media/userzed/UbuntuStore/CARLA_0.9.11/PythonAPI/carla/dist/carla-0.9.11-py3.7-linux-x86_64.egg')[
+        glob.glob('/opt/carla-simulator/PythonAPI/carla/dist/carla-0.9.11-py3.7-linux-x86_64.egg')[
             0])
 except IndexError:
     print("carla .egg not found")
@@ -66,11 +68,14 @@ class carlaEnv(gym.Env):
         self.previousXdotError = 0
         self.integralXdotError = 0
 
+        # for reward -- calculating distance threshold
+        self.collision_thre = 3.0
+
         self.actor_list = []
 
         # 0. client that will send the requests to the simulator.
         self.client = params['client']  # port 2000
-        self.client.set_timeout(2.0)  # timeout for connecting client
+        self.client.set_timeout(200.0)  # timeout for connecting client
 
         # 1. world
         self.world = self.client.get_world()
@@ -78,6 +83,7 @@ class carlaEnv(gym.Env):
         # set world timestamp
         settings = self.world.get_settings()
         settings.fixed_delta_seconds = self.delT  # 20 fps, 1ms
+        # settings.synchronous_mode = True
         self.world.apply_settings(settings)
 
         # 2. defining car
@@ -110,7 +116,7 @@ class carlaEnv(gym.Env):
         self.ego_vehicle.apply_physics_control(physics_control)
         # self.ego_vehicle.set_autopilot(True)
 
-        print('created %s' % self.ego_vehicle.type_id)
+        # print('created %s' % self.ego_vehicle.type_id)
 
         # 4. sensor
         # camera
@@ -118,7 +124,7 @@ class carlaEnv(gym.Env):
         camera_transform = carla.Transform(carla.Location(x=2.5, z=0.7))
         camera = self.world.spawn_actor(camera_bp, camera_transform, attach_to=self.ego_vehicle)
         self.actor_list.append(camera)
-        print('created %s' % camera.type_id)
+        # print('created %s' % camera.type_id)
         # Now we register the callback
         camera.listen(lambda image: image.save_to_disk('_out/%06d.png' % image.frame))
 
@@ -133,16 +139,6 @@ class carlaEnv(gym.Env):
         spectator.set_transform(carla.Transform(transform.location + carla.Location(z=20),
                                                 carla.Rotation(pitch=-90)))
 
-        # 6.  spawn pedestrian
-        bp = random.choice(self.blueprint_library.filter('walker'))
-        # bp = random.choice(self.world.get_blueprint_library.find('controller.ai.walker'))
-        ped_init_pos = params['ego_person_init_state']
-        self.ped_transform = carla.Transform(
-            carla.Location(x=ped_init_pos[0], y=ped_init_pos[1], z=ped_init_pos[2]))  # , carla.Rotation())
-        self.pedestrian = self.world.spawn_actor(bp, self.ped_transform)
-        self.actor_list.append(self.pedestrian)
-        print('created %s' % self.pedestrian.type_id)
-
         # 7. Trajectory PID
         # self.trajectory = ego_init_pos[0:2];
 
@@ -151,6 +147,29 @@ class carlaEnv(gym.Env):
         self.ped_con_count = 0
         self.ped_y_control = 0
         self.stop_start_time = 0
+
+    def spawn_walker(self, ped_action):
+        # 6.  spawn pedestrian
+        bp = random.choice(self.blueprint_library.filter('walker'))
+        # bp = random.choice(self.world.get_blueprint_library.find('controller.ai.walker'))
+        # ped_init_pos = params['ego_person_init_state']
+
+        # ped_action = [x_spwan_pos, y_spwan_pos, rotation, trigger_distance]
+        # TODO: ped z spawn point
+        # ped_rotation = ped_action[2] * np.pi
+        # if ped_rotation > np.pi:
+        #     ped_rotation = np.pi
+        # elif ped_rotation < -np.pi:
+        #     ped_rotation = -np.pi
+        # print(ped_action)
+        self.ped_transform = carla.Transform(
+            carla.Location(x=ped_action[0], y=ped_action[1], z=1.0),
+            carla.Rotation(roll=0.0, pitch=0.0, yaw=wrapToPi(ped_action[2])))  # )
+        self.pedestrian = self.world.spawn_actor(bp, self.ped_transform)
+
+        self.trigger_distance = ped_action[3]
+        self.actor_list.append(self.pedestrian)
+        # print('created %s' % self.pedestrian.type_id)
 
     def generateWaypoints(self, carla_location_start, carla_location_goal):
         '''
@@ -274,16 +293,17 @@ class carlaEnv(gym.Env):
         # ego = self.ego_vehicle
 
         # PID control for ego_vehicle
-        throttle, steer = self.get_control_input_PID(trajectory, ego)
-        # print(throttle)
-        brake = 0
+        throttle, steer = self.get_control_input_PID(trajectory, self.ego_vehicle)
+
+        # brake = 0
         if self.ped_con_count == 1:
             throttle = -(throttle * 20)
             brake = np.absolute(throttle) if throttle < 0 else 0
             throttle = 0.0
-        # elif self.ped_con_count == 0:
-        #     throttle, steer = self.get_cont
+        else:
+            brake = np.absolute(throttle) if throttle < 0 else 0
 
+        # print("throttle: ", throttle, "steer: ", steer, "brake: ", brake)
         act = carla.VehicleControl(throttle=float(throttle), steer=float(-steer), brake=float(brake))
         self.ego_vehicle.apply_control(act)
 
@@ -301,17 +321,41 @@ class carlaEnv(gym.Env):
         else:
             self.ped_y_control = 0.0
 
-        actp = carla.WalkerControl(carla.Vector3D(x=0.0, y=self.ped_y_control, z=0.0), speed=10.0, jump=False)
-        # actp = carla.WalkerControl()
-        self.pedestrian.apply_control(actp)
+        # actp = carla.WalkerControl(self.pedestrian.get_transform().get_forward_vector(), speed=3.0, jump=False)
+
+        # print(self.pedestrian.get_transform().get_forward_vector())
+        # self.pedestrian.apply_control(actp)
+
+        # TODO: KEEP MODIFYING -- APPLY CONTROL IF DIST < TRIGGER DISTANCE # ??
+
+        if ego_ped_distance(self.ego_vehicle, self.pedestrian) < self.trigger_distance:
+            # print(self.pedestrian)
+            actp = carla.WalkerControl(self.pedestrian.get_transform().get_forward_vector(), speed=3.0, jump=False)
+            # print(actp)
+            try:
+                self.pedestrian.apply_control(actp)
+                if self.control_verbose:
+                    print("apply walker control")
+                    self.control_verbose = False
+            except:
+                if self.control_verbose:
+                    print("apply walker control exception! try skip")
+                    self.control_verbose = False
+                pass
+
         self.world.tick()
 
         # Update timestep
         self.time_step += 1
         self.total_step += 1
-        print(self.time_step)
+        # print(self.time_step)
 
-        return self.terminal(self.ego_vehicle, self.pedestrian, trajectory)
+        collision = len(self.collision_hist) > 0
+
+        reward = self.get_reward()
+
+        # collision, reward, done, info = env.step(ego_action)
+        return collision, reward, self.terminal(self.ego_vehicle, self.pedestrian, trajectory)
 
     # TODO:
     def terminal(self, vehicle, pedestrian, trajectory):
@@ -338,7 +382,7 @@ class carlaEnv(gym.Env):
         ped_z = trans_ped.location.z
 
         self.relative_distance = np.sqrt((ego_x - ped_x) ** 2 + (ego_y - ped_y) ** 2 + (ego_z - ped_z) ** 2)
-        print('Distance between ego and ped:', self.relative_distance)
+        # print('Distance between ego and ped:', self.relative_distance)
 
         ego_roll = trans.rotation.roll
         ego_pitch = trans.rotation.pitch
@@ -350,8 +394,8 @@ class carlaEnv(gym.Env):
         # 1. If collides -- Collision sensor
         if len(self.collision_hist) > 0:
             print('collision')
-            return True, [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll], \
-                   [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
+            return True  # ,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+            # [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
         # 2. If reach maximum timestep # need global var
         if self.time_step > self.max_time_episode:
@@ -365,8 +409,8 @@ class carlaEnv(gym.Env):
             for destination in self.destinations:
                 if np.sqrt((ego_x - destination[0]) ** 2 + (ego_y - destination[1]) ** 2) < 4:
                     print('destination')
-                    return True, [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll], \
-                           [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
+                    return True  # ,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+                    # [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
         # 4. If out of lane
         Temp = []
@@ -382,30 +426,43 @@ class carlaEnv(gym.Env):
         # 1.5 was used but too small for lane departure, 300 worked
         if abs(dis) > 4.0 * self.out_lane_thres:
             print('out of lane')
-            return True, [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll], \
-                   [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
+            return True  # ,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+            # [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
         # # if ego-vehicle is too close to pedestrian (Temporarily not used)
         # if relative_distance < self.collision_distance:
         #     return True
 
         # angle: pitch yaw roll in degrees, left hand rule, shit rule
-        return False, [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll], \
-               [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
+        return False  # ,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+        # [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
-    def reset(self):
+    def destroy(self):
         # Clear sensor objects
         self.collision_sensor = None
         self.camera_sensor = None
+        for actor in self.actor_list:
+            # if actor.is_alive:
+            actor.destroy()
+        settings = self.world.get_settings()
+        settings.synchronous_mode = False
+        self.world.apply_settings(settings)
+
+    def reset(self):
 
         # Delete sensors, vehicles and walkers
         filters = ['sensor.other.collision', 'sensor.lidar.ray_cast', 'sensor.camera.rgb', 'vehicle.*',
                    'controller.ai.walker', 'walker.*']
         # for actor in self.world.get_actors().filter(filters):
+        # self.pedestrian.stop()
+        # self.ego_vehicle.stop()
         for actor in self.actor_list:
             # if actor.is_alive:
             actor.destroy()
             self.actor_list = []
+        # Clear sensor objects
+        self.collision_sensor = None
+        self.camera_sensor = None
 
         # Disable sync mode
         # self._set_synchronous_mode(False)
@@ -423,7 +480,7 @@ class carlaEnv(gym.Env):
         camera = self.world.spawn_actor(camera_bp, camera_transform, attach_to=self.ego_vehicle)
         self.actor_list.append(camera)
         # Now we register the callback
-        camera.listen(lambda image: image.save_to_disk('_out/%06d.png' % image.frame))
+        # camera.listen(lambda image: image.save_to_disk('_out/%06d.png' % image.frame))
 
         # Add collision sensor
         self.collision_bp = self.world.get_blueprint_library().find('sensor.other.collision')
@@ -432,9 +489,9 @@ class carlaEnv(gym.Env):
         self.actor_list.append(self.collision_sensor)
 
         # Add pedestrian
-        bp = random.choice(self.blueprint_library.filter('walker'))
-        self.pedestrian = self.world.spawn_actor(bp, self.ped_transform)
-        self.actor_list.append(self.pedestrian)
+        # bp = random.choice(self.blueprint_library.filter('walker'))
+        # self.pedestrian = self.world.spawn_actor(bp, self.ped_transform)
+        # self.actor_list.append(self.pedestrian)
 
         def get_collision_hist(event):
             impulse = event.normal_impulse
@@ -449,6 +506,8 @@ class carlaEnv(gym.Env):
         self.time_step = 0
         # self.reset_step += 1
 
+        self.control_verbose = True
+
         # Enable sync mode
         # self.settings.synchronous_mode = True
         # self.world.apply_settings(self.settings)
@@ -461,4 +520,18 @@ class carlaEnv(gym.Env):
 
         return  # return states...
 
+    def get_reward(self):
+
+        # TODO: find scale for relative distance MODIFYING...
+        rd = ego_ped_distance(self.ego_vehicle, self.pedestrian)
+
+        # TODO: NEED TO DEFINE COLLISION THRESHOLD (tmp:3)
+        if len(self.collision_hist) > 0 or ego_ped_distance(self.ego_vehicle, self.pedestrian) < self.collision_thre:
+            rb = 10
+        else:
+            rb = 0
+
+        # rp is defined in the main loop in RunTestOnCarlaEnv_with_re.py
+
+        return -rd + rb
 
