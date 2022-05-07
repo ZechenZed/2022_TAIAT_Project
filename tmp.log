@@ -1,0 +1,1149 @@
+nohup: ignoring input
+cuda available:  True
+/home/ubuntu/anaconda3/envs/carla2/lib/python3.7/site-packages/gym/spaces/box.py:84: UserWarning: [33mWARN: Box bound precision lowered by casting to float32[0m
+  logger.warn(f"Box bound precision lowered by casting to {self.dtype}")
+spawn at: x:  0.6015117466449738 y:  -131.00625920295715 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -137.8097077012062 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  10.284490585327148 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  1.5513548254966736 y:  -146.89531135559082 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  10.500926077365875 y:  -144.30630671977997 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  5.652541816234589 y:  -137.6070694923401 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -133.48575580120087 trigger distance:  14.422205101855958
+destination
+spawned too close to trajectory!
+spawn at: x:  1.804065853357315 y:  -130.1063232421875 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  9.417754411697388 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -11.90834641456604 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  14.05606895685196 y:  -144.27098500728607 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  4.258340299129486 y:  -148 trigger distance:  11.376718513140412
+apply walker control
+destination
+spawn at: x:  9.334023892879486 y:  -144.01482331752777 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -137.17173691093922 trigger distance:  11.174935317461737
+destination
+spawn at: x:  3.751686215400696 y:  -144.28992080688477 trigger distance:  3.6055512754639896
+apply walker control
+destination
+spawn at: x:  15 y:  -128.80196678638458 trigger distance:  14.422205101855958
+destination
+spawn at: x:  1.8270041048526764 y:  -148 trigger distance:  3.6055512754639896
+apply walker control
+destination
+spawn at: x:  10.653952360153198 y:  -140.64003932476044 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  12.27857619524002 y:  -146.02878379821777 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  8.553496599197388 y:  -130.80128061771393 trigger distance:  6.904504726571121
+destination
+spawned too close to trajectory!
+spawned too close to trajectory!
+spawn at: x:  15 y:  -134.41393184661865 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -144.6740244626999 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -2.0069029927253723 y:  -148 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  12.797182202339172 y:  -130.37786889076233 trigger distance:  6.83877147531251
+destination
+spawn at: x:  1.519661396741867 y:  -134.71411275863647 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawned too close to trajectory!
+spawn at: x:  11.772125959396362 y:  -145.70908951759338 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -143.1000589132309 trigger distance:  14.422205101855958
+apply walker control exception! try skip
+destination
+================================================== Test Action space ==================================================
+normal A: tensor([[0.2800]], device='cuda:0') tensor([[0.5886]], device='cuda:0')
+normal B: tensor([[0.1092]], device='cuda:0') tensor([[0.7986]], device='cuda:0')
+normal C: tensor([[0.4263]], device='cuda:0') tensor([[0.6350]], device='cuda:0')
+normal D: tensor([[0.1921]], device='cuda:0') tensor([[0.5458]], device='cuda:0')
+======================================================================================================================
+[1/10000] Reward: -33.69596173564466, Action: [array(0.27998483, dtype=float32), array(0.10915177, dtype=float32), array(0.4262842, dtype=float32)]
+-------------------------
+spawn at: x:  15 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  11.754574477672577 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  4.3330080807209015 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -1.629355251789093 y:  -134.09906554222107 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  11.199883818626404 y:  -135.62974396348 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -14.461408853530884 y:  -148 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -15 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  -0.08084356784820557 y:  -128.7925522327423 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -15 y:  -142.50397193431854 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  12.101047933101654 y:  -131.65199089050293 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -5.003393590450287 y:  -148 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  14.209997355937958 y:  -130.1619838476181 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  14.544137120246887 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  11.17710828781128 y:  -144.62797927856445 trigger distance:  3.6055512754639896
+destination
+spawned too close to trajectory!
+spawn at: x:  14.699786603450775 y:  -148 trigger distance:  3.7526671347235934
+destination
+spawn at: x:  -3.249986618757248 y:  -132.7849988937378 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -6.605369746685028 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  8.835697174072266 y:  -133.95044374465942 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  5.774403512477875 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  10.252066254615784 y:  -128.45637428760529 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  5.809790790081024 y:  -133.97344398498535 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -144.09194099903107 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  4.304924011230469 y:  -130.5864189863205 trigger distance:  3.9179630489315307
+destination
+spawn at: x:  11.907309293746948 y:  -137.43688929080963 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  2.7516572177410126 y:  -135.97291219234467 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -1.050245761871338 y:  -142.31308776140213 trigger distance:  3.6055512754639896
+apply walker control
+collision
+spawn at: x:  11.442541480064392 y:  -138.67445695400238 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -3.98296058177948 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawned too close to trajectory!
+spawned too close to trajectory!
+-------------------------
+spawn at: x:  15 y:  -139.57133609056473 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -9.036393463611603 y:  -129.0084104537964 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  1.0694635659456253 y:  -145.60632395744324 trigger distance:  3.6055512754639896
+apply walker control
+collision
+spawn at: x:  3.1300002336502075 y:  -136.6478391289711 trigger distance:  6.970948247457625
+apply walker control
+destination
+spawn at: x:  -4.388307631015778 y:  -133.52630066871643 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  12.520726919174194 y:  -134.9789606332779 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -144.62912368774414 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -9.46867436170578 y:  -132.80062305927277 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  1.5999504178762436 y:  -133.12600600719452 trigger distance:  14.238435676367798
+apply walker control
+destination
+spawn at: x:  7.301914393901825 y:  -130.15729355812073 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -134.21752798557281 trigger distance:  14.422205101855958
+destination
+spawn at: x:  15 y:  -133.35598516464233 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -9.795016944408417 y:  -138.16680555418134 trigger distance:  11.141992130998865
+apply walker control
+destination
+spawn at: x:  -11.059828698635101 y:  -146.9338082075119 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -8.402977287769318 y:  -138.12251876294613 trigger distance:  7.502400780666325
+apply walker control
+destination
+spawn at: x:  2.681318074464798 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -8.650825917720795 y:  -143.96365928649902 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  5.268690884113312 y:  -136.9358550310135 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -132.52127933502197 trigger distance:  14.422205101855958
+destination
+spawn at: x:  6.284921318292618 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  4.70058336853981 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  9.667313396930695 y:  -134.6510847210884 trigger distance:  11.935981164714486
+destination
+spawned too close to trajectory!
+spawn at: x:  -5.552447140216827 y:  -143.10038912296295 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -1.3554444909095764 y:  -132.93354499340057 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -15 y:  -142.71830159425735 trigger distance:  5.254543545553507
+destination
+spawn at: x:  15 y:  -135.00630128383636 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawned too close to trajectory!
+spawned too close to trajectory!
+spawn at: x:  12.41353154182434 y:  -143.8822900056839 trigger distance:  14.422205101855958
+apply walker control
+destination
+================================================== Test Action space ==================================================
+normal A: tensor([[0.3055]], device='cuda:0') tensor([[0.5969]], device='cuda:0')
+normal B: tensor([[0.1126]], device='cuda:0') tensor([[0.7873]], device='cuda:0')
+normal C: tensor([[0.5340]], device='cuda:0') tensor([[0.6372]], device='cuda:0')
+normal D: tensor([[0.3843]], device='cuda:0') tensor([[0.4592]], device='cuda:0')
+======================================================================================================================
+[3/10000] Reward: -34.02213867583314, Action: [array(0.3055299, dtype=float32), array(0.11261176, dtype=float32), array(0.53399456, dtype=float32)]
+-------------------------
+spawn at: x:  -15 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -5.668456256389618 y:  -138.8115390688181 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -4.922451674938202 y:  -132.13538217544556 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  9.702859818935394 y:  -130.28767812252045 trigger distance:  14.422205101855958
+destination
+spawn at: x:  13.965800106525421 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -5.5276742577552795 y:  -140.2920636832714 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  0.5542834103107452 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  8.678696751594543 y:  -137.26366671919823 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -148 trigger distance:  8.067021078783025
+destination
+spawn at: x:  -10.157001614570618 y:  -140.24181652069092 trigger distance:  3.6055512754639896
+apply walker control
+destination
+spawned too close to trajectory!
+spawned too close to trajectory!
+spawn at: x:  15 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  1.4142145961523056 y:  -140.41186887025833 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  14.2083540558815 y:  -146.26757490634918 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -1.651909500360489 y:  -130.16629266738892 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -129.51357531547546 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  8.967078924179077 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  10.889475345611572 y:  -145.6477611064911 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -138.11387556791306 trigger distance:  14.422205101855958
+apply walker control exception! try skip
+destination
+spawn at: x:  -5.333884656429291 y:  -141.64586174488068 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawn at: x:  15 y:  -147.6703690290451 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  14.899070262908936 y:  -128 trigger distance:  5.322989468030903
+destination
+spawn at: x:  5.804682970046997 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  4.393143206834793 y:  -145.07410156726837 trigger distance:  3.6055512754639896
+apply walker control
+destination
+spawn at: x:  6.894156038761139 y:  -128 trigger distance:  14.422205101855958
+destination
+spawn at: x:  13.435461223125458 y:  -140.2357578575611 trigger distance:  7.266403757322079
+destination
+spawn at: x:  0.6909200549125671 y:  -146.0127626657486 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  12.75887131690979 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  1.1466195434331894 y:  -144.83655202388763 trigger distance:  13.105112910215537
+apply walker control
+destination
+spawn at: x:  -12.87475436925888 y:  -141.4986412525177 trigger distance:  14.422205101855958
+apply walker control
+destination
+-------------------------
+spawn at: x:  5.990671813488007 y:  -131.46098124980927 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -10.541834235191345 y:  -137.62837360799313 trigger distance:  3.9614520201077963
+apply walker control
+destination
+spawn at: x:  -7.182468920946121 y:  -133.08168160915375 trigger distance:  8.777578682864513
+apply walker control
+destination
+spawn at: x:  1.40044704079628 y:  -134.33075416088104 trigger distance:  14.422205101855958
+apply walker control exception! try skip
+destination
+spawn at: x:  -7.2527338564395905 y:  -133.0544548034668 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  8.158843517303467 y:  -136.54098230600357 trigger distance:  12.865403895298586
+apply walker control
+destination
+spawn at: x:  6.89078226685524 y:  -131.78695130348206 trigger distance:  3.8742914062927203
+destination
+spawn at: x:  -5.547699183225632 y:  -148 trigger distance:  8.508821681788948
+apply walker control
+destination
+spawn at: x:  5.4503412544727325 y:  -134.66333884000778 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  9.715703129768372 y:  -139.835295855999 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  7.260298132896423 y:  -138.50020888447762 trigger distance:  5.296782560383862
+destination
+spawned too close to trajectory!
+spawn at: x:  -6.746416836977005 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  1.1508042365312576 y:  -148 trigger distance:  7.573898391106229
+apply walker control
+collision
+spawn at: x:  15 y:  -128.1020908355713 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  8.805494606494904 y:  -130.2314214706421 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -3.021170496940613 y:  -140.81845033168793 trigger distance:  11.380487992496917
+apply walker control
+destination
+spawn at: x:  1.6647816449403763 y:  -142.69412326812744 trigger distance:  3.6055512754639896
+apply walker control
+destination
+spawn at: x:  -6.002208441495895 y:  -142.79294955730438 trigger distance:  4.538396194718159
+apply walker control
+collision
+spawn at: x:  15 y:  -133.57672142982483 trigger distance:  14.422205101855958
+destination
+spawned too close to trajectory!
+spawn at: x:  0.399274080991745 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  4.322534501552582 y:  -144.9373655319214 trigger distance:  3.6055512754639896
+apply walker control
+destination
+spawn at: x:  -5.082839280366898 y:  -143.12168765068054 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawn at: x:  -15 y:  -143.95064640045166 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -9.052834510803223 y:  -138.88063910603523 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -133.86010932922363 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -4.374638646841049 y:  -128.59238851070404 trigger distance:  12.76692893345491
+apply walker control
+destination
+spawn at: x:  -12.88155734539032 y:  -139.6934137046337 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawned too close to trajectory!
+spawn at: x:  7.625488042831421 y:  -132.3925166130066 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -4.300955682992935 y:  -138.8088217675686 trigger distance:  7.2816971196201035
+apply walker control
+destination
+================================================== Test Action space ==================================================
+normal A: tensor([[0.2834]], device='cuda:0') tensor([[0.6383]], device='cuda:0')
+normal B: tensor([[0.0087]], device='cuda:0') tensor([[0.7649]], device='cuda:0')
+normal C: tensor([[0.5976]], device='cuda:0') tensor([[0.6199]], device='cuda:0')
+normal D: tensor([[0.5556]], device='cuda:0') tensor([[0.4210]], device='cuda:0')
+======================================================================================================================
+[5/10000] Reward: -39.306059897677976, Action: [array(0.283425, dtype=float32), array(0.00870263, dtype=float32), array(0.5975608, dtype=float32)]
+-------------------------
+spawn at: x:  10.262684226036072 y:  -138.70010244846344 trigger distance:  8.739682950690657
+destination
+spawn at: x:  15 y:  -137.2336579412222 trigger distance:  14.422205101855958
+destination
+spawn at: x:  8.161872625350952 y:  -135.09174424409866 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  0.36069631576538086 y:  -128.42626798152924 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -1.3636234402656555 y:  -131.32462310791016 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  5.626616030931473 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -11.161015033721924 y:  -129.41563832759857 trigger distance:  8.443435506309172
+apply walker control
+destination
+spawn at: x:  15 y:  -145.9906791448593 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -132.68635857105255 trigger distance:  11.476291652835386
+destination
+spawn at: x:  2.117975950241089 y:  -128.1790452003479 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -143.00403940677643 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -0.5291278660297394 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawn at: x:  15 y:  -128 trigger distance:  9.202906618100984
+destination
+spawn at: x:  -15 y:  -141.37787359952927 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -146.79964768886566 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  1.0213503241539001 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawn at: x:  15 y:  -146.98113131523132 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -130.90880143642426 trigger distance:  9.270737904833819
+destination
+spawn at: x:  15 y:  -146.70159029960632 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -1.7640437185764313 y:  -132.18556988239288 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  3.2426780462265015 y:  -136.16845700144768 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -135.83715039491653 trigger distance:  4.7353085095749865
+destination
+spawn at: x:  -10.202189683914185 y:  -141.26700001955032 trigger distance:  14.422205101855958
+apply walker control exception! try skip
+timestep maxed out
+spawn at: x:  5.747373998165131 y:  -129.9810551404953 trigger distance:  12.637432059119124
+out of lane
+spawn at: x:  0.5230935662984848 y:  -132.92067456245422 trigger distance:  3.6055512754639896
+out of lane
+spawn at: x:  15 y:  -148 trigger distance:  3.6055512754639896
+out of lane
+spawn at: x:  15 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  6.678297221660614 y:  -134.8437546491623 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -14.818264245986938 y:  -148 trigger distance:  3.6055512754639896
+destination
+spawned too close to trajectory!
+spawned too close to trajectory!
+spawn at: x:  14.11776065826416 y:  -144.47375404834747 trigger distance:  14.422205101855958
+apply walker control
+destination
+-------------------------
+spawn at: x:  -3.014768958091736 y:  -145.43735551834106 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  11.158423125743866 y:  -133.4272085428238 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  2.957412153482437 y:  -148 trigger distance:  3.6055512754639896
+apply walker control
+collision
+spawn at: x:  -3.9739760756492615 y:  -144.44293665885925 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawn at: x:  -7.816373705863953 y:  -128.42676091194153 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -3.1638970971107483 y:  -140.85018861293793 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  -1.23683363199234 y:  -142.13457840681076 trigger distance:  11.529345892786386
+apply walker control
+destination
+spawn at: x:  9.813481271266937 y:  -146.33495676517487 trigger distance:  12.825765262464452
+apply walker control
+destination
+spawn at: x:  15 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  2.5043101608753204 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -145.634037733078 trigger distance:  9.536289559010738
+destination
+spawn at: x:  2.4061131477355957 y:  -133.9367150068283 trigger distance:  8.571653143138139
+apply walker control
+destination
+spawn at: x:  -4.010290503501892 y:  -129.1134272813797 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -6.578781008720398 y:  -141.9552927017212 trigger distance:  3.6055512754639896
+timestep maxed out
+spawned too close to trajectory!
+spawn at: x:  -2.9062874615192413 y:  -140.04648047685623 trigger distance:  14.422205101855958
+apply walker control
+out of lane
+spawn at: x:  -3.907485008239746 y:  -133.02618074417114 trigger distance:  3.6055512754639896
+out of lane
+spawn at: x:  15 y:  -137.97819542884827 trigger distance:  3.6055512754639896
+destination
+spawned too close to trajectory!
+spawn at: x:  -2.467653751373291 y:  -147.3491506576538 trigger distance:  9.743522811501327
+apply walker control
+collision
+spawn at: x:  -4.0212929248809814 y:  -129.03653132915497 trigger distance:  8.888554282705313
+destination
+spawn at: x:  15 y:  -138.7830336689949 trigger distance:  6.157396711910516
+destination
+spawn at: x:  15 y:  -134.11086905002594 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  8.219981789588928 y:  -128 trigger distance:  5.61710771533573
+destination
+spawn at: x:  11.573174893856049 y:  -135.26058840751648 trigger distance:  13.276858470223813
+destination
+spawn at: x:  10.969195067882538 y:  -141.4422191977501 trigger distance:  9.351786009150754
+destination
+spawned too close to trajectory!
+spawned too close to trajectory!
+spawn at: x:  -15 y:  -142.57988530397415 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -145.46026039123535 trigger distance:  13.299069170993189
+apply walker control
+destination
+spawn at: x:  7.8094482421875 y:  -130.7905422449112 trigger distance:  14.422205101855958
+apply walker control
+destination
+================================================== Test Action space ==================================================
+normal A: tensor([[0.1984]], device='cuda:0') tensor([[0.6747]], device='cuda:0')
+normal B: tensor([[-0.1320]], device='cuda:0') tensor([[0.7565]], device='cuda:0')
+normal C: tensor([[0.5467]], device='cuda:0') tensor([[0.6342]], device='cuda:0')
+normal D: tensor([[0.5764]], device='cuda:0') tensor([[0.4373]], device='cuda:0')
+======================================================================================================================
+[7/10000] Reward: -45.768385926550884, Action: [array(0.1983591, dtype=float32), array(-0.1320262, dtype=float32), array(0.54670763, dtype=float32)]
+-------------------------
+spawn at: x:  3.6043111234903336 y:  -145.21430957317352 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -15 y:  -140.1170474588871 trigger distance:  3.6055512754639896
+timestep maxed out
+spawn at: x:  -15 y:  -147.44331228733063 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  -3.4368395805358887 y:  -148 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  1.7620044574141502 y:  -148 trigger distance:  3.9957082920249585
+apply walker control
+collision
+spawn at: x:  13.832809925079346 y:  -148 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  3.55961412191391 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -135.2089785337448 trigger distance:  5.5917862270130225
+destination
+spawn at: x:  -15 y:  -142.96193408966064 trigger distance:  11.646215870908291
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  7.411918044090271 y:  -137.58799742162228 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -10.086489915847778 y:  -146.93176913261414 trigger distance:  3.6055512754639896
+destination
+spawned too close to trajectory!
+spawn at: x:  4.825056195259094 y:  -137.48560662567616 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -139.4841391146183 trigger distance:  8.933460300888818
+destination
+spawn at: x:  4.3693238496780396 y:  -128.74662148952484 trigger distance:  3.6055512754639896
+destination
+spawned too close to trajectory!
+spawn at: x:  -13.62422525882721 y:  -130.904914021492 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  8.151909112930298 y:  -140.19678670167923 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  -9.960397481918335 y:  -139.41920268535614 trigger distance:  7.394055112617158
+apply walker control
+collision
+spawn at: x:  15 y:  -139.5536905825138 trigger distance:  9.937288879050332
+destination
+spawn at: x:  -14.836694598197937 y:  -130.8034073114395 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -14.079859256744385 y:  -145.3128753900528 trigger distance:  9.71080312894557
+apply walker control
+destination
+spawn at: x:  -9.825147986412048 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  1.9097913801670074 y:  -144.28451883792877 trigger distance:  4.686865649515217
+apply walker control
+destination
+spawn at: x:  7.196048051118851 y:  -136.76048438251019 trigger distance:  11.00371950469484
+apply walker control
+destination
+spawn at: x:  13.952677845954895 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -2.6909074187278748 y:  -141.07639807462692 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -7.185838669538498 y:  -143.34076631069183 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  0.865645632147789 y:  -145.06658482551575 trigger distance:  11.232726120982715
+apply walker control
+destination
+-------------------------
+spawn at: x:  15 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  4.99794602394104 y:  -136.97261798381805 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -145.0408320426941 trigger distance:  13.521309421400815
+apply walker control
+destination
+spawn at: x:  15 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  14.050313830375671 y:  -133.28098285198212 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  0.8418659493327141 y:  -147.83981490135193 trigger distance:  5.473680530173906
+apply walker control
+destination
+spawn at: x:  8.385338187217712 y:  -139.7549592256546 trigger distance:  3.7184449793884062
+destination
+spawn at: x:  -1.266455054283142 y:  -141.1734338402748 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  10.038692951202393 y:  -147.23733592033386 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  -15 y:  -140.65429586172104 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  9.775194525718689 y:  -145.96608924865723 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  -11.91169559955597 y:  -142.93127703666687 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  6.539567559957504 y:  -129.1279571056366 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -3.4040728211402893 y:  -139.08604162931442 trigger distance:  4.409275408687611
+apply walker control
+destination
+spawn at: x:  -3.7139421701431274 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -5.985475033521652 y:  -146.8755214214325 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -6.367987543344498 y:  -146.49273204803467 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -1.32772296667099 y:  -141.0882266163826 trigger distance:  5.1471778561739905
+apply walker control
+destination
+spawn at: x:  10.391111969947815 y:  -132.7690051794052 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -129.45377159118652 trigger distance:  14.422205101855958
+destination
+spawn at: x:  -14.36614215373993 y:  -128 trigger distance:  7.120107555660292
+destination
+spawn at: x:  0.3963243216276169 y:  -144.9604229927063 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  12.768548727035522 y:  -137.42340843379498 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -15 y:  -145.1563458442688 trigger distance:  8.136383044918182
+destination
+spawn at: x:  3.7730585038661957 y:  -144.3387155532837 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  14.042197465896606 y:  -138.74338860809803 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  8.096328377723694 y:  -142.49812233448029 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  3.1763041019439697 y:  -145.36645579338074 trigger distance:  14.422205101855958
+apply walker control
+destination
+================================================== Test Action space ==================================================
+normal A: tensor([[0.1660]], device='cuda:0') tensor([[0.6756]], device='cuda:0')
+normal B: tensor([[-0.3236]], device='cuda:0') tensor([[0.7449]], device='cuda:0')
+normal C: tensor([[0.5748]], device='cuda:0') tensor([[0.6458]], device='cuda:0')
+normal D: tensor([[0.7530]], device='cuda:0') tensor([[0.4548]], device='cuda:0')
+======================================================================================================================
+[9/10000] Reward: -31.600295582139086, Action: [array(0.16595817, dtype=float32), array(-0.3236481, dtype=float32), array(0.57477444, dtype=float32)]
+-------------------------
+spawn at: x:  9.448628425598145 y:  -135.6501101255417 trigger distance:  11.28535269480376
+apply walker control
+destination
+spawn at: x:  6.269602328538895 y:  -138.173120200634 trigger distance:  10.519284456869055
+apply walker control exception! try skip
+destination
+spawn at: x:  3.495924174785614 y:  -147.72144305706024 trigger distance:  3.6055512754639896
+apply walker control
+destination
+spawn at: x:  -6.029182970523834 y:  -137.35358434915543 trigger distance:  3.6055512754639896
+apply walker control
+destination
+spawn at: x:  15 y:  -134.37532353401184 trigger distance:  14.422205101855958
+destination
+spawn at: x:  -3.8854533433914185 y:  -144.15856528282166 trigger distance:  11.822545410088416
+apply walker control
+collision
+spawn at: x:  -7.004061341285706 y:  -147.03974771499634 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -11.24642550945282 y:  -140.247484177351 trigger distance:  7.41742416536667
+apply walker control
+destination
+spawn at: x:  -9.623772203922272 y:  -142.5379787683487 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawn at: x:  11.710571944713593 y:  -148 trigger distance:  3.6055512754639896
+destination
+spawned too close to trajectory!
+spawn at: x:  2.4498843401670456 y:  -143.02080857753754 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  3.3816390484571457 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  15 y:  -135.13682353496552 trigger distance:  10.247287723678362
+destination
+spawn at: x:  14.918080866336823 y:  -136.70247930288315 trigger distance:  11.612562414817525
+destination
+spawn at: x:  -5.422697961330414 y:  -132.60427105426788 trigger distance:  7.235316298011056
+apply walker control
+destination
+spawn at: x:  -15 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -0.5035393685102463 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawn at: x:  -2.6923392713069916 y:  -148 trigger distance:  7.489809344206937
+apply walker control
+destination
+spawn at: x:  10.038410425186157 y:  -130.523992061615 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -0.5265790969133377 y:  -129.8451166152954 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -8.215381801128387 y:  -138.4768204689026 trigger distance:  3.6055512754639896
+apply walker control
+collision
+spawn at: x:  1.7116425186395645 y:  -145.85184025764465 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  -1.0881344228982925 y:  -128 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -12.165715992450714 y:  -139.1376714706421 trigger distance:  14.224833099636326
+apply walker control
+collision
+spawn at: x:  4.393651485443115 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -15 y:  -144.07124984264374 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -145.67928957939148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -134.11621290445328 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -2.4673135578632355 y:  -147.16441917419434 trigger distance:  14.422205101855958
+apply walker control
+destination
+-------------------------
+spawn at: x:  14.610000550746918 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -1.8305423855781555 y:  -148 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -15 y:  -144.8557906150818 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  -10.22116094827652 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  2.8475213795900345 y:  -136.35200756788254 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -14.70668077468872 y:  -143.4526251554489 trigger distance:  5.096425276651049
+destination
+spawn at: x:  0.4307638853788376 y:  -144.9294285774231 trigger distance:  7.734663247139552
+apply walker control
+collision
+spawn at: x:  0.6006200239062309 y:  -134.88845545053482 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  15 y:  -148 trigger distance:  3.8072719330301936
+destination
+spawn at: x:  -13.152759075164795 y:  -131.80987763404846 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  8.970307409763336 y:  -129.41283631324768 trigger distance:  13.56061279837428
+destination
+spawn at: x:  13.279051780700684 y:  -146.70986223220825 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  5.8384014666080475 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -7.12812066078186 y:  -142.15627479553223 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawn at: x:  8.52269858121872 y:  -140.43853226304054 trigger distance:  9.953258663028777
+apply walker control
+destination
+spawn at: x:  12.722992300987244 y:  -141.26189696788788 trigger distance:  8.335043095856355
+destination
+spawn at: x:  -1.9999301433563232 y:  -146.97691130638123 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -4.858989268541336 y:  -138.68286150693893 trigger distance:  3.6055512754639896
+apply walker control
+destination
+spawn at: x:  11.081995368003845 y:  -131.82139027118683 trigger distance:  8.68943970218681
+destination
+spawn at: x:  15 y:  -143.25005340576172 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -2.5007200241088867 y:  -147.0692412853241 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -9.119001030921936 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  7.520771026611328 y:  -132.98270511627197 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  8.769613802433014 y:  -133.90731859207153 trigger distance:  3.6089503615667358
+destination
+spawn at: x:  -3.868282735347748 y:  -147.7100007534027 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -3.170342892408371 y:  -133.99592357873917 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  10.286155343055725 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -8.432777523994446 y:  -131.2688283920288 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  4.359375536441803 y:  -128.0266981124878 trigger distance:  14.422205101855958
+apply walker control
+destination
+================================================== Test Action space ==================================================
+normal A: tensor([[0.1536]], device='cuda:0') tensor([[0.6560]], device='cuda:0')
+normal B: tensor([[-0.5649]], device='cuda:0') tensor([[0.7254]], device='cuda:0')
+normal C: tensor([[0.6351]], device='cuda:0') tensor([[0.6483]], device='cuda:0')
+normal D: tensor([[0.9874]], device='cuda:0') tensor([[0.4798]], device='cuda:0')
+======================================================================================================================
+[11/10000] Reward: -48.321560487383174, Action: [array(0.15364157, dtype=float32), array(-0.5648597, dtype=float32), array(0.63511896, dtype=float32)]
+-------------------------
+spawn at: x:  -14.198368191719055 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  11.898938119411469 y:  -141.6500659584999 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -6.2705665826797485 y:  -133.34121692180634 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -11.356597244739532 y:  -140.99952000379562 trigger distance:  11.528330454362242
+apply walker control exception! try skip
+timestep maxed out
+spawn at: x:  -3.6402174085378647 y:  -128.8109349012375 trigger distance:  11.841658217760642
+destination
+spawn at: x:  -2.342941537499428 y:  -133.47956764698029 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  7.145098149776459 y:  -133.12888431549072 trigger distance:  9.43966817524288
+destination
+spawn at: x:  -8.43855768442154 y:  -143.79448103904724 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawn at: x:  -8.816753625869751 y:  -141.42525750398636 trigger distance:  3.6055512754639896
+apply walker control
+collision
+spawn at: x:  -2.4534816294908524 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  6.75755649805069 y:  -139.7567291855812 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  8.042417764663696 y:  -139.50166392326355 trigger distance:  7.537934678283284
+destination
+spawn at: x:  -14.447888731956482 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  -4.788016676902771 y:  -141.5673087835312 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawned too close to trajectory!
+spawned too close to trajectory!
+spawn at: x:  -5.87565690279007 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -7.13470995426178 y:  -146.9666873216629 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -15 y:  -148 trigger distance:  4.6131593261855475
+destination
+spawn at: x:  -6.589235365390778 y:  -148 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  0.5798907950520515 y:  -145.66478180885315 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -1.7014165967702866 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -14.559674263000488 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -134.17944568395615 trigger distance:  6.3828568154799905
+destination
+spawn at: x:  -15 y:  -148 trigger distance:  14.422205101855958
+apply walker control exception! try skip
+destination
+spawned too close to trajectory!
+spawn at: x:  -6.538422703742981 y:  -142.94819223880768 trigger distance:  3.911660077570235
+destination
+spawn at: x:  -2.638220116496086 y:  -146.52452635765076 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -15 y:  -148 trigger distance:  5.81396415421578
+destination
+-------------------------
+spawn at: x:  12.383754551410675 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -6.8043601512908936 y:  -141.09795260429382 trigger distance:  3.791868430585635
+apply walker control
+collision
+spawn at: x:  15 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -0.49628913402557373 y:  -139.29945039749146 trigger distance:  11.556120156505331
+apply walker control
+destination
+spawn at: x:  6.630055904388428 y:  -139.6515901684761 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  14.92290884256363 y:  -138.1004123687744 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -3.1040970236063004 y:  -144.86870276927948 trigger distance:  5.069105147620501
+apply walker control
+destination
+spawn at: x:  6.132717132568359 y:  -133.36440432071686 trigger distance:  9.99870087568175
+destination
+spawn at: x:  11.817951500415802 y:  -140.34571874141693 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -1.509462520480156 y:  -146.37838768959045 trigger distance:  12.610583652277148
+apply walker control
+collision
+spawn at: x:  -1.004066839814186 y:  -131.9530485868454 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  10.472540259361267 y:  -145.4047827720642 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  3.6731287837028503 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -5.965437591075897 y:  -138.9841775894165 trigger distance:  8.205844405819722
+apply walker control
+destination
+spawn at: x:  -10.021166503429413 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -144.29233121871948 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -6.300751268863678 y:  -148 trigger distance:  3.6055512754639896
+destination
+spawned too close to trajectory!
+spawn at: x:  11.650623679161072 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  13.41014564037323 y:  -146.7786841392517 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -15 y:  -147.8871785402298 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  12.43942379951477 y:  -148 trigger distance:  14.422205101855958
+apply walker control exception! try skip
+destination
+spawn at: x:  2.0662012696266174 y:  -145.09194898605347 trigger distance:  11.991922688311705
+apply walker control
+destination
+spawn at: x:  14.292228519916534 y:  -133.4617941379547 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -0.3332890570163727 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawned too close to trajectory!
+spawn at: x:  11.11973762512207 y:  -143.59803187847137 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  7.695499956607819 y:  -132.8993694782257 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  6.251734793186188 y:  -128 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  12.605007290840149 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+================================================== Test Action space ==================================================
+normal A: tensor([[0.1989]], device='cuda:0') tensor([[0.6339]], device='cuda:0')
+normal B: tensor([[-0.7635]], device='cuda:0') tensor([[0.7071]], device='cuda:0')
+normal C: tensor([[0.7821]], device='cuda:0') tensor([[0.6267]], device='cuda:0')
+normal D: tensor([[1.2729]], device='cuda:0') tensor([[0.4654]], device='cuda:0')
+======================================================================================================================
+[13/10000] Reward: -29.20922248536724, Action: [array(0.1989215, dtype=float32), array(-0.763489, dtype=float32), array(0.7820614, dtype=float32)]
+-------------------------
+spawn at: x:  15 y:  -135.949059009552 trigger distance:  14.422205101855958
+destination
+spawn at: x:  14.452165067195892 y:  -142.32241559028625 trigger distance:  13.295604860432935
+apply walker control
+destination
+spawn at: x:  15 y:  -139.45166128873825 trigger distance:  14.422205101855958
+apply walker control exception! try skip
+destination
+spawn at: x:  -13.900626003742218 y:  -137.6928632259369 trigger distance:  7.994318911228343
+apply walker control
+collision
+spawn at: x:  8.799759149551392 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -143.986710190773 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  14.142340421676636 y:  -140.2328546643257 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  14.344646036624908 y:  -143.68391025066376 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  9.199653267860413 y:  -143.6633472442627 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  8.905275464057922 y:  -128 trigger distance:  14.422205101855958
+destination
+spawn at: x:  15 y:  -143.74608087539673 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  9.309936761856079 y:  -139.31002604961395 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -15 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -15 y:  -139.10038578510284 trigger distance:  14.422205101855958
+apply walker control
+collision
+spawn at: x:  -15 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -141.92273366451263 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  8.631748259067535 y:  -148 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  -15 y:  -139.319819688797 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -2.0515309274196625 y:  -128.43418526649475 trigger distance:  3.6055512754639896
+destination
+spawn at: x:  10.23279458284378 y:  -134.26405000686646 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  5.452398508787155 y:  -135.72809028625488 trigger distance:  8.53564537425658
+apply walker control
+destination
+spawn at: x:  15 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  -9.120464622974396 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  15 y:  -139.2860095500946 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  6.787913739681244 y:  -130.34775304794312 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  1.9066067039966583 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -1.9570568203926086 y:  -148 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -1.0813160240650177 y:  -148 trigger distance:  9.816259364272488
+apply walker control
+destination
+spawned too close to trajectory!
+spawn at: x:  15 y:  -146.88502597808838 trigger distance:  14.422205101855958
+apply walker control
+destination
+-------------------------
+spawned too close to trajectory!
+spawn at: x:  9.88793671131134 y:  -141.8509178161621 trigger distance:  14.422205101855958
+apply walker control
+destination
+spawn at: x:  -0.608903244137764 y:  -140.02434062957764 trigger distance:  14.422205101855958
+apply walker control
