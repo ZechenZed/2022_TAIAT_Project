@@ -3,7 +3,7 @@ import sys
 import matplotlib as plt
 
 try:
-    sys.path.append('/opt/carla-simulator/PythonAPI/carla/agents/navigation/')
+    sys.path.append('/media/userzed/UbuntuStore/TAIAT/CARLA_0.9.11/PythonAPI/carla/agents/navigation/')
 except IndexError:
     print("navigation not found")
     pass
@@ -16,12 +16,12 @@ from utils import *
 from reinforce_continuous import REINFORCE
 
 try:
-    sys.path.append(
-        glob.glob('/opt/carla-simulator/PythonAPI/carla/dist/carla-0.9.11-py3.7-linux-x86_64.egg')[
-            0])
+    sys.path.append(glob.glob(
+        '/media/userzed/UbuntuStore/TAIAT/CARLA_0.9.11/PythonAPI/carla/dist/carla-0.9.11-py3.7-linux-x86_64.egg')[0])
 except IndexError:
-    print("carla .egg not found")
+    print("carla egg not found")
     pass
+
 import carla
 import gym
 from gym import spaces
@@ -280,10 +280,10 @@ class carlaEnv(gym.Env):
         #     return -(F*20), delta
         # else:
         #     return F, delta
-        if self.relative_distance < 10:
-            self.ped_con_count = 1
-        if self.relative_distance >= 6:
-            self.ped_con_count = 0
+        # if self.relative_distance < 10:
+        #     self.ped_con_count = 1
+        # if self.relative_distance >= 4:
+        #     self.ped_con_count = 0
 
         return F, delta
 
@@ -296,12 +296,14 @@ class carlaEnv(gym.Env):
         throttle, steer = self.get_control_input_PID(trajectory, self.ego_vehicle)
 
         # brake = 0
-        if self.ped_con_count == 1:
-            throttle = -(throttle * 20)
-            brake = np.absolute(throttle) if throttle < 0 else 0
-            throttle = 0.0
-        else:
-            brake = np.absolute(throttle) if throttle < 0 else 0
+        # if self.ped_con_count == 1:
+        #     throttle = -(throttle*20)
+        #     brake = np.absolute(throttle) if throttle < 0 else 0
+        #     throttle = 0.0
+        # else:
+        #     brake = np.absolute(throttle) if throttle < 0 else 0
+
+        brake = np.absolute(throttle) if throttle < 0 else 0
 
         # print("throttle: ", throttle, "steer: ", steer, "brake: ", brake)
         act = carla.VehicleControl(throttle=float(throttle), steer=float(-steer), brake=float(brake))
@@ -312,14 +314,14 @@ class carlaEnv(gym.Env):
         # direction (carla.Vector3D)
         # actp = carla.WalkerControl(direction=[1.0, 0.0, 0.0], speed=0.0, jump=False)
         # Critical scenario generation
-        self.ped_y_control = -0.5
-        if self.relative_distance <= 15.0:
-            self.ped_y_control = -1.0
-            self.ped_con_count += 1
-        elif self.ped_con_count != 0:
-            self.ped_y_control = -0.5
-        else:
-            self.ped_y_control = 0.0
+        # self.ped_y_control = -0.5
+        # if self.relative_distance <= 15.0:
+        #     self.ped_y_control = -1.0
+        #     self.ped_con_count += 1
+        # elif self.ped_con_count != 0:
+        #     self.ped_y_control = -0.5
+        # else:
+        #     self.ped_y_control = 0.0
 
         # actp = carla.WalkerControl(self.pedestrian.get_transform().get_forward_vector(), speed=3.0, jump=False)
 
@@ -327,10 +329,23 @@ class carlaEnv(gym.Env):
         # self.pedestrian.apply_control(actp)
 
         # TODO: KEEP MODIFYING -- APPLY CONTROL IF DIST < TRIGGER DISTANCE # ??
+        # actp = carla.WalkerControl(direction=carla.Vector3D(x=0.0,  y=-1.0, z=0.0), speed=2.0, jump=False)
+        # self.pedestrian.apply_control(actp)
+        actp = carla.WalkerControl(self.pedestrian.get_transform().get_forward_vector(), speed=1.2, jump=False)
+        try:
+            self.pedestrian.apply_control(actp)
+            if self.control_verbose:
+                print("apply walker control")
+                self.control_verbose = False
+        except:
+            if self.control_verbose:
+                print("apply walker control exception! try skip")
+                self.control_verbose = False
+            pass
 
         if ego_ped_distance(self.ego_vehicle, self.pedestrian) < self.trigger_distance:
             # print(self.pedestrian)
-            actp = carla.WalkerControl(self.pedestrian.get_transform().get_forward_vector(), speed=3.0, jump=False)
+            actp = carla.WalkerControl(self.pedestrian.get_transform().get_forward_vector(), speed=2.0, jump=False)
             # print(actp)
             try:
                 self.pedestrian.apply_control(actp)
@@ -351,6 +366,8 @@ class carlaEnv(gym.Env):
         # print(self.time_step)
 
         collision = len(self.collision_hist) > 0
+
+        # critical_scene = True if self.relative_distance < self.collision_distance else False
 
         reward = self.get_reward()
 
@@ -391,17 +408,23 @@ class carlaEnv(gym.Env):
         ped_pitch = trans_ped.rotation.pitch
         ped_yaw = trans_ped.rotation.yaw
 
-        # 1. If collides -- Collision sensor
+        # 1.1 If collides -- Collision sensor
         if len(self.collision_hist) > 0:
-            print('collision')
-            return True  # ,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+            print('Collision')
+            return True, self.relative_distance  # [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+            # [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
+
+        # 1.2 If car and pedestrian are too close
+        if self.relative_distance < self.collision_distance:
+            print('Close Distance')
+            return True, self.relative_distance  # [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll], \
             # [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
         # 2. If reach maximum timestep # need global var
         if self.time_step > self.max_time_episode:
             print('timestep maxed out')
-            return True, [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll], \
-                   [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
+            return True, self.relative_distance  # [ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+            # [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
         # If at destination # set destination to ?
         # 3. If the ego-vehicle is close to one of the destination, we terminate.
@@ -409,7 +432,7 @@ class carlaEnv(gym.Env):
             for destination in self.destinations:
                 if np.sqrt((ego_x - destination[0]) ** 2 + (ego_y - destination[1]) ** 2) < 4:
                     print('destination')
-                    return True  # ,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+                    return True, self.relative_distance  # ,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
                     # [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
         # 4. If out of lane
@@ -426,7 +449,7 @@ class carlaEnv(gym.Env):
         # 1.5 was used but too small for lane departure, 300 worked
         if abs(dis) > 4.0 * self.out_lane_thres:
             print('out of lane')
-            return True  # ,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+            return True, self.relative_distance  # ,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
             # [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
         # # if ego-vehicle is too close to pedestrian (Temporarily not used)
@@ -434,7 +457,7 @@ class carlaEnv(gym.Env):
         #     return True
 
         # angle: pitch yaw roll in degrees, left hand rule, shit rule
-        return False  # ,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
+        return False, self.relative_distance  # ,[ego_x, ego_y, ego_z, ego_pitch, ego_yaw, ego_roll],\
         # [ped_x, ped_y, ped_z, ped_pitch, ped_yaw, ped_roll]
 
     def destroy(self):

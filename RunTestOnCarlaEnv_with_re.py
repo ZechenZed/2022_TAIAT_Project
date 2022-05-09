@@ -8,7 +8,8 @@ from utils import *
 from reinforce_continuous import REINFORCE
 
 try:
-    sys.path.append(glob.glob('/opt/carla-simulator/PythonAPI/carla/dist/carla-0.9.11-py3.7-linux-x86_64.egg')[0])
+    sys.path.append(glob.glob(
+        '/media/userzed/UbuntuStore/TAIAT/CARLA_0.9.11/PythonAPI/carla/dist/carla-0.9.11-py3.7-linux-x86_64.egg')[0])
 except IndexError:
     print("carla egg not found")
     pass
@@ -65,8 +66,8 @@ def main():
         'ego_vehicle_init_state': [-30.4, -135.6, 1.0, 0.0, 0.0, 0.0],
         # 1) [20, 134.5, 1.0, 0.0, 0.0, 0.0]
         # 2) [38.1, -133.8, 2.0](straight) [-25.0,-134.0,1.0] [7.5, -179.3, 1.0](left-turn)
-        # 3) 1. [6.7, -150.0, 1.0] 2.[21.0, -134.4, 1.0] 3.[-1.0, -121.1, 1.0]
-        'ego_vehicle_end_state': [7.5, -179.3, 1.0],
+        # 3) 1. [6.9, -151.3, 1.0](notwork) [7.5, -179.3, 1.0](work) 2.[-0.9,-122.8,1.0] 3.[20.9, -134.3, 1.0]
+        'ego_vehicle_end_state': [7.5, -165.0, 1.0],
         'ego_person_init_state': [-15, -128, 1.0, 90.0, 0.0, 0.0],
         'ego_person_end_state': [-20, 134.5, 1.0, 0.0, 0.0, 0.0],
         'xscope_min': -12,
@@ -79,7 +80,8 @@ def main():
     gamma = 0.0  # reward decay rate
     num_epoch = 10000  # training epoch number
     agent = REINFORCE(lr=lr, gamma=gamma)  # reinforce algorithm
-    agent.save_model()
+    # agent.save_model()
+    agent.load_model()
 
     num_runs = 32  # number of simulation runs before parameter update
 
@@ -104,8 +106,13 @@ def main():
     plt.plot(route[:, 0], route[:, 1])
     plt.show()
 
-    for t_i in range(num_epoch):
+    collision_rate_hist = []
+    critical_rate_hist = []
+    ped_spawn_hist = []
 
+    for t_i in range(num_epoch):
+        collision_score = 0
+        critical_score = 0
         reward_b = []
         log_prob_b = []
         entropy_b = []
@@ -150,6 +157,7 @@ def main():
                     obs = env.reset()
                     env.spawn_walker(ped_action)
                     print("spawn at: x: ", ped_action[0], "y: ", ped_action[1], "trigger distance: ", ped_action[3])
+                    ped_spawn_hist.append(np.copy(ped_action))
                     # clear up + set collision sensor
                     # set world timestamp
                     # settings = env.world.get_settings()
@@ -158,7 +166,8 @@ def main():
 
                     while True:
                         # one run
-                        collision, reward, done = env.step(ego_trajectory, env.ego_vehicle)
+                        collision, reward, done_info = env.step(ego_trajectory, env.ego_vehicle)
+                        done = done_info[0]
                         if done:
                             # settings = env.world.get_settings()
                             # settings.synchronous_mode = False
@@ -166,7 +175,10 @@ def main():
                             state = env.reset()
                             # env.destroy()
                             # print('one round end !!')
-
+                            if collision:
+                                collision_score += 1
+                            if done_info[1] < params['collision_distance']:
+                                critical_score += 1
                             break
 
                 rewards[a_i] = reward
@@ -193,7 +205,15 @@ def main():
             action_det = [action_det_1, action_det_2, action_det_3]
             agent.save_model()
 
-            print('[{}/{}] Reward: {}, Action: {}'.format(t_i + 1, num_epoch, rewards[a_i], action_det))
+            print('[{}/{}] Reward: {}, Action: {}'.format(t_i + 1, num_epoch, np.mean(reward), action_det))
+        collision_rate = collision_score / num_runs
+        curr_colli_rate = np.copy(collision_rate)
+        collision_rate_hist.append(curr_colli_rate)
+        critical_rate = critical_score / num_runs
+        curr_crit_rate = np.copy(collision_rate)
+        critical_rate_hist.append(curr_crit_rate)
+        print('collision rate:', collision_rate, ' critical score:', critical_rate,
+              ' value rate:', collision_rate+critical_rate)
         print('-------------------------')
 
     # 10 trials ... mean
@@ -202,4 +222,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
